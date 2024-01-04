@@ -1,4 +1,5 @@
 .toc {
+  display: block;
   position: fixed;
   top: 105px;
   right: 25px;
@@ -66,4 +67,26 @@
 }
 .toc li.active > a {
   color: #409eff;
+}
+
+/* dark */
+.toc.dark {
+  background-color: #050505;
+  .control {
+    background-color: transparent;
+    border: 1px dashed #f59794;
+  }
+  li a {
+    color: #bbb;
+  }
+}
+.toc.dark .control {
+  background-color: transparent;
+  border: 1px dashed #f59794;
+}
+.toc.dark li a {
+  color: #bbb;
+}
+.toc.dark li.active a {
+  color: #fff;
 }
