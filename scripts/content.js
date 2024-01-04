@@ -118,7 +118,6 @@ function createTOC() {
 
   function createToc() {
     let toc = document.querySelector("#toc.toc")
-    console.log({ toc })
     if (toc) {
       toc.removeChild(toc.querySelector("ul"))
     } else {
@@ -191,7 +190,7 @@ function createTOC() {
   }
 
   function formatTitle(title) {
-    return title.replace(/[^\u4e00-\u9fa5\d\.\、\-\）\)a-z A-Z]/g, "")
+    return title.replace(/[^\u4e00-\u9fa5\d\.\、\-\）\(\)a-z A-Z]/g, "")
   }
 
   function removeHash(href) {
