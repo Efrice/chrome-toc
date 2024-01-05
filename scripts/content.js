@@ -4,7 +4,12 @@ createTOC()
 
 let cacheURL = location.href
 
-chrome.runtime.onMessage.addListener(() => {
+chrome.runtime.onMessage.addListener((message) => {
+  if ("mode" in message) {
+    setStorage("mode", message.mode)
+    setMode()
+  }
+
   if (isDiffURL(cacheURL, location.href)) {
     createTOC()
     cacheURL = location.href
@@ -29,6 +34,8 @@ function createTOC() {
         clearInterval(timer)
 
         appendToc(getAnchors(generateTree(h2s, h3s)))
+
+        setMode()
       }
     }, 1000)
   }
@@ -200,4 +207,21 @@ function createTOC() {
 
 function isDiffURL(url1, url2) {
   return url1.replace(/#[^\/]*$/, "") !== url2.replace(/#[^\/]*$/, "")
+}
+
+function getStorage(key) {
+  return localStorage.getItem(key)
+}
+
+function setStorage(key, val) {
+  return localStorage.setItem(key, val)
+}
+
+function setMode() {
+  const toc = document.querySelector("#toc.toc")
+  if (getStorage("mode") === "dark") {
+    toc.classList.add("dark")
+  } else {
+    toc.classList.remove("dark")
+  }
 }
