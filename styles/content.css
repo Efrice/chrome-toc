@@ -85,6 +85,6 @@
 .toc.dark li a {
   color: #bbb;
 }
-.toc.dark li.active a {
+.toc.dark li.active > a {
   color: #fff;
 }
