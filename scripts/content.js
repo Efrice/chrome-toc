@@ -5,12 +5,10 @@ createTOC()
 let cacheURL = location.href
 
 chrome.runtime.onMessage.addListener((message) => {
-  if ("mode" in message) {
+  if (message.mode) {
     setStorage("mode", message.mode)
     setMode()
-  }
-
-  if (isDiffURL(cacheURL, location.href)) {
+  } else if (message.url && isDiffURL(cacheURL, location.href)) {
     createTOC()
     cacheURL = location.href
   }
@@ -90,7 +88,6 @@ function createTOC() {
         .querySelector("#toc.toc")
         .querySelectorAll("li")
         .forEach((li) => {
-          console.log({ li, target: e.target })
           if (li.id !== e.target.parentElement.id) {
             li.classList.remove("active")
           } else {
