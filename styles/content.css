@@ -42,7 +42,7 @@
   width: 22px;
   text-align: center;
   line-height: 22px;
-  font-size: 2em;
+  font-size: 22px;
   color: #fff;
   font-weight: 400;
   transition: 0.5s;
@@ -50,6 +50,12 @@
 }
 .toc.expand .control::before {
   transform: rotate(45deg);
+}
+.toc .content {
+  width: fit-content;
+  height: fit-content;
+  max-height: 80vh;
+  overflow-y: scroll;
 }
 .toc ul,
 .toc li {
@@ -72,6 +78,22 @@
   color: #409eff;
 }
 
+.content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+}
+.content::-webkit-scrollbar-track {
+  display: none;
+}
+.content::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #dddfe1;
+}
+.content::-webkit-scrollbar-button {
+  display: none;
+}
+
 /* dark */
 .toc.dark {
   background-color: #050505;
@@ -86,6 +108,12 @@
 .toc.dark .control {
   background-color: transparent;
   border: 1px dashed #f59794;
+}
+.toc.dark .content::-webkit-scrollbar {
+  background-color: #050505;
+}
+.toc.dark .content::-webkit-scrollbar-thumb {
+  background-color: #555;
 }
 .toc.dark li a {
   color: #bbb;

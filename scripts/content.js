@@ -146,10 +146,12 @@ function createTOC() {
   }
 
   function createContent(anchors) {
+    const content = document.createElement("div")
+    content.className = "content"
     const ul = document.createElement("ul")
     anchors.map((a) => ul.appendChild(a))
-
-    return ul
+    content.appendChild(ul)
+    return content
   }
 
   let dragged = false
