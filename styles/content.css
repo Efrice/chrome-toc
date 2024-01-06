@@ -1,5 +1,4 @@
 .toc {
-  display: block;
   position: fixed;
   top: 105px;
   right: 25px;
@@ -13,7 +12,10 @@
   font-size: 12px;
   transition: width 0.5s, height 0.5s;
 }
-.toc.disabled {
+#toc.toc {
+  display: block;
+}
+#toc.toc.disabled {
   display: none;
 }
 .toc.expand {
