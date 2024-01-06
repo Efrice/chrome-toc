@@ -13,6 +13,9 @@
   font-size: 12px;
   transition: width 0.5s, height 0.5s;
 }
+.toc.disabled {
+  display: none;
+}
 .toc.expand {
   width: fit-content;
   height: fit-content;

@@ -5,7 +5,10 @@ createTOC()
 let cacheURL = location.href
 
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.mode) {
+  if (message.enable) {
+    setStorage("enable", message.enable)
+    toggleEnable()
+  } else if (message.mode) {
     setStorage("mode", message.mode)
     setMode()
   } else if (message.url && isDiffURL(cacheURL, location.href)) {
@@ -33,6 +36,7 @@ function createTOC() {
 
         appendToc(getAnchors(generateTree(h2s, h3s)))
 
+        toggleEnable()
         setMode()
       }
     }, 1000)
@@ -220,5 +224,14 @@ function setMode() {
     toc.classList.add("dark")
   } else {
     toc.classList.remove("dark")
+  }
+}
+
+function toggleEnable() {
+  const toc = document.querySelector("#toc.toc")
+  if (getStorage("enable") === "disabled") {
+    toc.classList.add("disabled")
+  } else {
+    toc.classList.remove("disabled")
   }
 }

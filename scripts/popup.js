@@ -9,7 +9,21 @@ if (mode === "dark") {
 modeEl.addEventListener("change", (e) => {
   const mode = e.target.checked ? "dark" : "light"
   setStorage("mode", mode)
-  sendMessageToContent({ mode: mode })
+  sendMessageToContent({ mode })
+})
+
+const enableEl = document.getElementById("enable")
+const enable = getStorage("enable")
+
+if (enable === "disabled") {
+  enableEl.checked = false
+  sendMessageToContent({ enable: "disabled" })
+}
+
+enableEl.addEventListener("change", (e) => {
+  const enable = e.target.checked ? "enabled" : "disabled"
+  setStorage("enable", enable)
+  sendMessageToContent({ enable })
 })
 
 function getStorage(key) {
