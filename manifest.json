@@ -3,7 +3,7 @@
   "name": "TOC",
   "version": "1.0.0",
   "description": "Generate TOC for the current page.",
-  "permissions": ["history"],
+  "permissions": ["history", "storage"],
   "action": {
     "default_popup": "popup.html"
   },

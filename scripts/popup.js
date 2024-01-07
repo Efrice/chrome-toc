@@ -1,38 +1,32 @@
-const modeEl = document.getElementById("mode")
-const mode = getStorage("mode")
+const storage = chrome.storage.local
 
-if (mode === "dark") {
-  modeEl.checked = true
-  sendMessageToContent({ mode: "dark" })
-}
+const modeEl = document.getElementById("mode")
+
+storage.get(["mode"]).then((result) => {
+  if (result.mode === "dark") {
+    modeEl.checked = true
+  }
+})
 
 modeEl.addEventListener("change", (e) => {
   const mode = e.target.checked ? "dark" : "light"
-  setStorage("mode", mode)
+  storage.set({ mode }).then(() => {})
   sendMessageToContent({ mode })
 })
 
 const enableEl = document.getElementById("enable")
-const enable = getStorage("enable")
 
-if (enable === "disabled") {
-  enableEl.checked = false
-  sendMessageToContent({ enable: "disabled" })
-}
+storage.get("enable").then((result) => {
+  if (result.enable === "disabled") {
+    enableEl.checked = false
+  }
+})
 
 enableEl.addEventListener("change", (e) => {
   const enable = e.target.checked ? "enabled" : "disabled"
-  setStorage("enable", enable)
+  storage.set({ enable }).then(() => {})
   sendMessageToContent({ enable })
 })
-
-function getStorage(key) {
-  return localStorage.getItem(key)
-}
-
-function setStorage(key, val) {
-  return localStorage.setItem(key, val)
-}
 
 function sendMessageToContent(message, callback) {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {

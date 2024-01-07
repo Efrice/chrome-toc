@@ -6,10 +6,8 @@ let cacheURL = location.href
 
 chrome.runtime.onMessage.addListener((message) => {
   if (message.enable) {
-    setStorage("enable", message.enable)
     toggleEnable()
   } else if (message.mode) {
-    setStorage("mode", message.mode)
     setMode()
   } else if (message.url && isDiffURL(cacheURL, location.href)) {
     createTOC()
@@ -221,28 +219,25 @@ function isDiffURL(url1, url2) {
   return url1.replace(/#[^\/]*$/, "") !== url2.replace(/#[^\/]*$/, "")
 }
 
-function getStorage(key) {
-  return localStorage.getItem(key)
-}
-
-function setStorage(key, val) {
-  return localStorage.setItem(key, val)
-}
-
+const storage = chrome.storage.local
 function setMode() {
   const toc = document.querySelector("#toc.toc")
-  if (getStorage("mode") === "dark") {
-    toc.classList.add("dark")
-  } else {
-    toc.classList.remove("dark")
-  }
+  storage.get(["mode"]).then((result) => {
+    if (result.mode === "dark") {
+      toc.classList.add("dark")
+    } else {
+      toc.classList.remove("dark")
+    }
+  })
 }
 
 function toggleEnable() {
   const toc = document.querySelector("#toc.toc")
-  if (getStorage("enable") === "disabled") {
-    toc.classList.add("disabled")
-  } else {
-    toc.classList.remove("disabled")
-  }
+  storage.get(["enable"]).then((result) => {
+    if (result.enable === "disabled") {
+      toc.classList.add("disabled")
+    } else {
+      toc.classList.remove("disabled")
+    }
+  })
 }
