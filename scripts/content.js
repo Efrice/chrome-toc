@@ -141,6 +141,15 @@ function createTOC() {
   function createControl() {
     const control = document.createElement("div")
     control.className = "control"
+    const icon = document.createElement("span")
+    icon.className = "icon"
+    icon.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+        <line x1="11" y1="5" x2="11" y2="17" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+        <line x1="5" y1="11" x2="17" y2="11" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      `
+    control.appendChild(icon)
     control.addEventListener("mousedown", handleMouseDown)
     return control
   }
@@ -190,11 +199,11 @@ function createTOC() {
     dragged = true
   }
 
-  function handleMouseUp() {
+  function handleMouseUp(e) {
     document.removeEventListener("mousemove", handleMouseMove)
     document.removeEventListener("mouseup", handleMouseUp)
 
-    if (!dragged) {
+    if (!dragged && e.target.tagName !== "DIV") {
       document.querySelector(".toc").classList.toggle("expand")
     }
   }

@@ -34,21 +34,15 @@
 .toc.expand .control {
   cursor: move;
 }
-.toc .control::before {
-  content: "+";
+.toc .control .icon {
   position: absolute;
   right: 0;
   top: 0;
-  width: 22px;
-  text-align: center;
-  line-height: 22px;
-  font-size: 22px;
-  color: #fff;
-  font-weight: 400;
+  bottom: 0;
   transition: 0.5s;
   cursor: pointer;
 }
-.toc.expand .control::before {
+.toc.expand .control .icon {
   transform: rotate(45deg);
 }
 .toc .content {
