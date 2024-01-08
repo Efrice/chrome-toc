@@ -41,8 +41,8 @@ function createTOC() {
   }
 
   function generateTree(h2s, h3s) {
-    const h2sInfo = h2s.map((h2) => getElementInfo(h2))
-    const h3sInfo = h3s.map((h3) => getElementInfo(h3))
+    const h2sInfo = h2s.map((h2) => getElementInfo(h2)).filter((h2) => h2.id)
+    const h3sInfo = h3s.map((h3) => getElementInfo(h3)).filter((h3) => h3.id)
     if (h2sInfo.length === 0) {
       return h3sInfo
     }
@@ -106,10 +106,12 @@ function createTOC() {
   }
 
   function createElementInfo(el) {
+    console.log({ el: el.dataset.id })
+    const id = el.id || el.dataset.id
     return {
       title: formatTitle(el.innerText),
-      id: el.id,
-      href: removeHash(location.href) + "#" + el.id,
+      id,
+      href: removeHash(location.href) + "#" + id,
       top: el.getBoundingClientRect().top,
       nextTop: Infinity,
       children: [],
