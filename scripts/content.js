@@ -106,7 +106,6 @@ function createTOC() {
   }
 
   function createElementInfo(el) {
-    console.log({ el: el.dataset.id })
     const id = el.id || el.dataset.id
     return {
       title: formatTitle(el.innerText),
