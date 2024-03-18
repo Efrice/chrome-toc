@@ -1,12 +1,10 @@
 html {
   width: 102px;
 }
-
 h3 {
   margin: 0;
   padding: 4px 0;
 }
-
 .enable,
 .mode {
   display: flex;
@@ -14,22 +12,18 @@ h3 {
   align-items: center;
   padding: 4px 0;
 }
-
 label {
   cursor: pointer;
 }
-
 .switch {
   position: relative;
   display: inline-block;
   width: 30px;
   height: 16px;
 }
-
 .switch input {
   display: none;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -41,7 +35,6 @@ label {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -53,23 +46,18 @@ label {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-
 input:checked + .slider {
   background-color: #2196f3;
 }
-
 input:focus + .slider {
   box-shadow: 0 0 1px #2196f3;
 }
-
 input:checked + .slider:before {
   transform: translateX(12px);
 }
-
 .slider.round {
   border-radius: 16px;
 }
-
 .slider.round::before {
   border-radius: 50%;
 }

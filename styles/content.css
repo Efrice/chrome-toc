@@ -1,4 +1,4 @@
-.toc {
+#toc {
   position: fixed;
   top: 105px;
   right: 25px;
@@ -18,11 +18,11 @@
 #toc.toc.disabled {
   display: none;
 }
-.toc.expand {
+#toc.expand {
   width: fit-content;
   height: fit-content;
 }
-.toc .control {
+#toc .control {
   position: relative;
   width: 100%;
   height: 24px;
@@ -31,10 +31,10 @@
   transition: 0.5s;
   border: 1px dashed #409eff;
 }
-.toc.expand .control {
+#toc.expand .control {
   cursor: move;
 }
-.toc .control .icon {
+#toc .control .icon {
   position: absolute;
   right: 0;
   top: 0;
@@ -42,26 +42,27 @@
   transition: 0.5s;
   cursor: pointer;
 }
-.toc.expand .control .icon {
-  transform: rotate(45deg);
-}
-.toc .content {
+#toc .content {
   width: fit-content;
   height: fit-content;
+  padding: 10px;
   max-height: 80vh;
   overflow-y: scroll;
 }
-.toc ul,
-.toc li {
+#toc ul,
+#toc li {
   margin: 0;
   padding: 0;
 }
 .toc ul {
   padding-top: 4px;
 }
+#toc ul ul {
+  padding-left: 8px;
+}
 .toc li {
   list-style: none;
-  padding: 0 20px;
+  padding: 0 10px;
   line-height: 24px;
 }
 .toc li a {
@@ -72,25 +73,25 @@
   color: #409eff;
 }
 
-.content::-webkit-scrollbar {
+#toc .content::-webkit-scrollbar {
   width: 8px;
   height: 8px;
   background-color: #fff;
 }
-.content::-webkit-scrollbar-track {
+#toc .content::-webkit-scrollbar-track {
   display: none;
 }
-.content::-webkit-scrollbar-thumb {
+#toc .content::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #dddfe1;
 }
-.content::-webkit-scrollbar-button {
+#toc .content::-webkit-scrollbar-button {
   display: none;
 }
 
 /* dark */
-.toc.dark {
-  background-color: #050505;
+#toc.dark {
+  background-color: #181a1b;
   .control {
     background-color: transparent;
     border: 1px dashed #f59794;
@@ -99,19 +100,19 @@
     color: #bbb;
   }
 }
-.toc.dark .control {
+#toc.dark .control {
   background-color: transparent;
   border: 1px dashed #f59794;
 }
-.toc.dark .content::-webkit-scrollbar {
-  background-color: #050505;
+#toc.dark .content::-webkit-scrollbar {
+  background-color: #181a1b;
 }
-.toc.dark .content::-webkit-scrollbar-thumb {
+#toc.dark .content::-webkit-scrollbar-thumb {
   background-color: #555;
 }
-.toc.dark li a {
+#toc.dark li a {
   color: #bbb;
 }
-.toc.dark li.active > a {
+#toc.dark li.active > a {
   color: #fff;
 }

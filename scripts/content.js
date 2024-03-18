@@ -143,9 +143,8 @@ function createTOC() {
     const icon = document.createElement("span")
     icon.className = "icon"
     icon.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22">
-        <line x1="11" y1="5" x2="11" y2="17" stroke="#fff" stroke-width="2" stroke-linecap="round" />
-        <line x1="5" y1="11" x2="17" y2="11" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+        <path fill="#333333" d="M3 4h18v2H3zm6 7h12v2H9zm-6 7h18v2H3z"/>
       </svg>
       `
     control.appendChild(icon)
