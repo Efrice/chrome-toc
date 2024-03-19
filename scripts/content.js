@@ -32,10 +32,13 @@ function createTOC() {
       if (h2s.length > 0 || h3s.length > 0) {
         clearInterval(timer)
 
-        appendToc(getAnchors(generateTree(h2s, h3s)))
-
-        toggleEnable()
-        setMode()
+        const tree = generateTree(h2s, h3s)
+        console.log({ tree })
+        if (tree.length > 0) {
+          appendToc(getAnchors(tree))
+          toggleEnable()
+          setMode()
+        } 
       }
     }, 1000)
   }
@@ -143,7 +146,7 @@ function createTOC() {
     const icon = document.createElement("span")
     icon.className = "icon"
     icon.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
         <path fill="#333333" d="M3 4h18v2H3zm6 7h12v2H9zm-6 7h18v2H3z"/>
       </svg>
       `

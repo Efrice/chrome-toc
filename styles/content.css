@@ -36,11 +36,16 @@
 }
 #toc .control .icon {
   position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  right: 2px;
+  top: 2px;
   transition: 0.5s;
   cursor: pointer;
+}
+#toc .control .icon svg {
+  float: right;
 }
 #toc .content {
   width: fit-content;
