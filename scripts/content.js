@@ -29,7 +29,7 @@ function createTOC() {
       if (times > 10) {
         clearInterval(timer)
       }
-      if (h2s.length >= 0 || h3s.length >= 3) {
+      if (h2s.length >= 3 || h3s.length >= 3) {
         clearInterval(timer)
 
         const tree = generateTree(h2s, h3s)
