@@ -33,12 +33,11 @@ function createTOC() {
         clearInterval(timer)
 
         const tree = generateTree(h2s, h3s)
-        console.log({ tree })
         if (tree.length > 0) {
           appendToc(getAnchors(tree))
           toggleEnable()
           setMode()
-        } 
+        }
       }
     }, 1000)
   }
@@ -129,7 +128,7 @@ function createTOC() {
   function createToc() {
     let toc = document.querySelector("#toc.toc")
     if (toc) {
-      toc.removeChild(toc.querySelector("ul"))
+      toc.removeChild(toc.querySelector(".content"))
     } else {
       toc = document.createElement("div")
       toc.id = "toc"
@@ -221,6 +220,24 @@ function createTOC() {
 function isDiffURL(url1, url2) {
   return url1.replace(/#[^\/]*$/, "") !== url2.replace(/#[^\/]*$/, "")
 }
+
+var observer = new MutationObserver(function (mutationsList, observer) {
+  // 遍历 mutationsList 来检查 URL 的变化
+  mutationsList.forEach(function (mutation) {
+    // 在 mutation 中检查 URL 的变化，这取决于你的页面结构
+    if (mutation.type === 'childList' && isDiffURL(cacheURL, location.href)) {
+      createTOC()
+      cacheURL = location.href
+    }
+  })
+})
+
+var observerConfig = {
+  childList: true,
+  subtree: true
+}
+
+observer.observe(document.body, observerConfig)
 
 const storage = chrome.storage.local
 function setMode() {

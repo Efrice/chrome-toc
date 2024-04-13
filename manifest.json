@@ -3,18 +3,24 @@
   "name": "TOC",
   "version": "1.0.0",
   "description": "Generate TOC for the current page.",
-  "permissions": ["history", "storage"],
+  "permissions": [
+    "webNavigation",
+    "storage"
+  ],
   "action": {
     "default_popup": "popup.html"
   },
-  "background": {
-    "service_worker": "scripts/background.js"
-  },
   "content_scripts": [
     {
-      "css": ["styles/content.css"],
-      "js": ["scripts/content.js"],
-      "matches": ["<all_urls>"]
+      "css": [
+        "styles/content.css"
+      ],
+      "js": [
+        "scripts/content.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ],
   "icons": {
